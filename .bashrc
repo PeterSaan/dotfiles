@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# shellcheck extended-analysis=false
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias l='ls -CF --color=auto'
+alias la='ls -AF --color=auto'
+alias grep='grep --color=auto'
+alias vim='nvim'
+alias g++='g++ -std=c++23'
+
+PS1='[\u@\h \W]\$ '
+
+source /usr/share/nvm/init-nvm.sh
+
+prog()
+{
+	cd "$HOME/proge/"
+}
+
+gpgCat()
+{
+	gpg "$1"
+	echo -e "\nContents of the file:\n"
+	cat "$2"
+	rm -rf "$2"
+}
+
+discli()
+{
+	gpg ~/Documents/Sush/d_a.gpg
+	discordo -token "$(< ~/Documents/Sush/d_a)" ; rm -rf ~/Documents/Sush/d_a
+}
+
+devClinker()
+{
+	if [[ $PWD != *"linker/backend" ]]; then
+		echo "Please us this cmd in the project's backend directory"
+		return 2
+	fi
+	rm -rf ~/go/bin/clinker
+	go build ./cmd/cli/clinker.go
+	mv clinker ~/go/bin/
+}
+
+# bun
+export BUN_BIN="$HOME/.bun/bin"
+# go
+export GO_BIN="$HOME/go/bin"
+# mason
+export MASON_BIN="$HOME/.local/share/nvim/mason/bin"
+
+export PATH="$BUN_BIN:$GO_BIN:$MASON_BIN:$PATH"
