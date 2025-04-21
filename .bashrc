@@ -37,7 +37,7 @@ discli()
 devClinker()
 {
 	if [[ $PWD != *"linker/backend" ]]; then
-		echo "Please us this cmd in the project's backend directory"
+		echo "Please use this cmd in the project's backend directory"
 		return 2
 	fi
 	rm -rf ~/go/bin/clinker
@@ -45,11 +45,10 @@ devClinker()
 	mv clinker ~/go/bin/
 }
 
-# bun
+export XDG_CONFIG_HOME="$HOME/.config"
+export EDITOR="nvim"
 export BUN_BIN="$HOME/.bun/bin"
-# go
 export GO_BIN="$HOME/go/bin"
-# mason
 export MASON_BIN="$HOME/.local/share/nvim/mason/bin"
 
 export PATH="$BUN_BIN:$GO_BIN:$MASON_BIN:$PATH"
