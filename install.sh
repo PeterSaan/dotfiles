@@ -2,13 +2,8 @@
 
 CHECK_MARK="\033[0;32m\xE2\x9C\x94\033[0m"
 
-if [[ $PWD != $HOME/dotfiles ]]; then
+if [[ $PWD != "$HOME/dotfiles" ]]; then
 	echo "Please run this exceptional script from the directory it is based in or move the directory to your home directory"
-	exit 1
-fi
-
-if [ "$EUID" -ne 0 ]; then
-	echo "Please run this exceptional script as root. I want to plant my backdoor :)"
 	exit 1
 fi
 
@@ -24,11 +19,18 @@ if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
 	exit 0
 fi
 
+echo "Continue with installing? [y/n]:"
+read READY
+if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
+	echo "Exiting"
+	exit 0
+fi
+
 echo "First we gotta make sure everything's on the latest version..."
-pacman -Syu
+sudo pacman -Syu
 
 echo "Amazing! Now we install what's needed with pacman..."
-pacman -S --needed git base-devel grep less \
+sudo pacman -S --needed git base-devel grep less \
 	kitty tmux nvim lua luarocks nvm go \
 	hyprland mako pipewire wireplumber xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland hyprpolkitagent
 
@@ -46,12 +48,4 @@ makepkg -si
 echo "And some AUR packages with it..."
 yay -S brave
 
-echo "Before we continue with symlinking make sure you set up some drivers (GPU etc.) on your own because I haven't automated that yet"
-echo "Continue? [y/n]:"
-read READY
-if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
-	echo "Exiting"
-	exit 0
-fi
-
-echo "All done! $CHECK_MARK"
+echo "That's it. All done! $CHECK_MARK"
