@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+GREEN="\033[0;32m"
+RESET_TXT="\033[0m"
+CHECK_MARK="\033[0;32m\xE2\x9C\x94\033[0m"
+
+if [[ $PWD != "$HOME/dotfiles" ]]; then
+	echo "Please run this exceptional script from the directory it's based in or move the directory to your \$HOME."
+	exit 1
+fi
+
+if [ -z "$XDG_CONFIG_HOME" ]; then 
+	echo "Couldn't find XDG_CONFIG_HOME env variable. Make sure it's set."
+	exit 1
+fi
+
+echo "Running setup script for Peter's magnificent one-of-a-kind marvelous Arch Linux setup. Ready? [y/n]:"
+read READY
+if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
+	echo "Exiting..."
+	exit 0
+fi
+
+echo "Creating symlinks..."
+
+rm -rf $XDG_CONFIG_HOME/hypr*
+rm -rf $XDG_CONFIG_HOME/kitty*
+rm -rf $XDG_CONFIG_HOME/nvim*
+rm -rf $XDG_CONFIG_HOME/tmux*
+rm -rf $XDG_CONFIG_HOME/uwsm*
+rm -rf $HOME/.bash_profile
+
+ln -s $HOME/dotfiles/hypr $XDG_CONFIG_HOME/.config/hypr
+ln -s $HOME/dotfiles/kitty $XDG_CONFIG_HOME/.config/kitty
+ln -s $HOME/dotfiles/nvim $XDG_CONFIG_HOME/.config/nvim
+ln -s $HOME/dotfiles/tmux $XDG_CONFIG_HOME/.config/tmux
+ln -s $HOME/dotfiles/uwsm $XDG_CONFIG_HOME/.config/uwsm
+ln -s $HOME/dotfiles/uwsm $XDG_CONFIG_HOME/.config/uwsm
+ln -s $HOME/dotfiles/.bash_profile $HOME/.bash_profile
+
+echo "Done!"
+echo "Continue with installing? [y/n]:"
+read READY
+if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
+	echo "Exiting"
+	exit 0
+fi
+
+echo "First we gotta make sure everything's on the latest version..."
+sudo pacman -Syu
+
+echo "Amazing! Now we install what's needed with pacman..."
+sudo pacman -S --needed git base-devel grep less kitty tmux nvim lua luarocks \
+	nvm go hyprland mako pipewire wireplumber xdg-desktop-portal-hyprland \
+	xdg-desktop-portal-gtk qt5-wayland qt6-wayland hyprpolkitagent uwsm hyprpaper sddm hyprlock hypridle
+
+echo "Setting Git's default branch to main"
+git config --global init.defaultBranch main
+
+echo "Installing latest Node.js and NPM versions with NVM..."
+nvm install node
+
+echo "Incredible! Now let's install Yet another Yogurt..."
+git clone https://aur.archlinux.org/yay.git "$HOME/yay"
+cd "$HOME/yay" || exit 69
+makepkg -si
+
+echo "And some AUR packages with it..."
+yay -S brave
+
+echo "Done!"
+echo "Continue enabling services? [y/n]:"
+read READY
+if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
+	echo "Exiting"
+	exit 0
+fi
+
+systemctl enable NetworkManager
+systemctl --user enable --now hypridle.service
+
+echo -e "That's it. All done! ${CHECK_MARK}"

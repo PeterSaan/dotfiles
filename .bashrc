@@ -13,8 +13,6 @@ alias g++='g++ -std=c++23'
 
 PS1='[\u@\h \W]\$ '
 
-source /usr/share/nvm/init-nvm.sh
-
 prog()
 {
 	cd "$HOME/proge/"
@@ -45,10 +43,22 @@ devClinker()
 	mv clinker ~/go/bin/
 }
 
+battery()
+{
+	local i=0
+	for bat in /sys/class/power_supply/BAT*; do
+		echo "BAT$i: $(< $bat/capacity)%, $(< $bat/status)"
+		((i++))
+	done
+}
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR="nvim"
 export BUN_BIN="$HOME/.bun/bin"
 export GO_BIN="$HOME/go/bin"
 export MASON_BIN="$HOME/.local/share/nvim/mason/bin"
+if [[ $PATH != "$BUN_BIN:$GO_BIN:MASON_BIN:$PATH" ]]; then
+	export PATH="$BUN_BIN:$GO_BIN:$MASON_BIN:$PATH"
+fi
 
-export PATH="$BUN_BIN:$GO_BIN:$MASON_BIN:$PATH"
+source /usr/share/nvm/init-nvm.sh
