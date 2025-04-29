@@ -83,6 +83,7 @@ fi
 systemctl enable NetworkManager
 systemctl enable sddm
 systemctl --user enable --now hypridle
+systemctl --user enable --now hyprpolkitagent
 systemctl enable docker.socket
 
 echo -e "That's it. All done! ${CHECK_MARK}"
