@@ -25,7 +25,9 @@ echo "Creating symlinks..."
 
 rm -rf $XDG_CONFIG_HOME/hypr*
 rm -rf $XDG_CONFIG_HOME/kitty*
+rm -rf $XDG_CONFIG_HOME/neofetch*
 rm -rf $XDG_CONFIG_HOME/nvim*
+rm -rf $XDG_CONFIG_HOME/rofi*
 rm -rf $XDG_CONFIG_HOME/tmux*
 rm -rf $XDG_CONFIG_HOME/uwsm*
 rm -rf $XDG_CONFIG_HOME/xdg-desktop-portal*
@@ -34,7 +36,9 @@ rm -rf $HOME/.bashrc
 
 ln -s $HOME/dotfiles/hypr $XDG_CONFIG_HOME/hypr
 ln -s $HOME/dotfiles/kitty $XDG_CONFIG_HOME/kitty
+ln -s $HOME/dotfiles/neofetch $XDG_CONFIG_HOME/neofetch
 ln -s $HOME/dotfiles/nvim $XDG_CONFIG_HOME/nvim
+ln -s $HOME/dotfiles/rofi $XDG_CONFIG_HOME/rofi
 ln -s $HOME/dotfiles/tmux $XDG_CONFIG_HOME/tmux
 ln -s $HOME/dotfiles/uwsm $XDG_CONFIG_HOME/uwsm
 ln -s $HOME/dotfiles/xdg-desktop-portal $XDG_CONFIG_HOME/xdg-desktop-portal
@@ -56,7 +60,8 @@ echo "Amazing! Now we install what's needed with pacman..."
 sudo pacman -S --needed git base-devel grep less kitty tmux nvim lua luarocks nvm go \
 	hyprland mako sof-firmware pipewire pipewire-audio wireplumber sddm hyprlock hypridle \
 	xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland \
-	networkmanager hyprpolkitagent uwsm hyprpaper wget docker docker-compose unzip
+	networkmanager hyprpolkitagent uwsm hyprpaper wget docker docker-compose unzip \
+	btop rofi brightnessctl
 
 echo "Setting Git's default branch to main"
 git config --global init.defaultBranch main
