@@ -30,6 +30,7 @@ rm -rf $XDG_CONFIG_HOME/nvim*
 rm -rf $XDG_CONFIG_HOME/rofi*
 rm -rf $XDG_CONFIG_HOME/tmux*
 rm -rf $XDG_CONFIG_HOME/uwsm*
+rm -rf $XDG_CONFIG_HOME/waybar*
 rm -rf $XDG_CONFIG_HOME/xdg-desktop-portal*
 rm -rf $HOME/.bash_profile
 rm -rf $HOME/.bashrc
@@ -41,6 +42,7 @@ ln -s $HOME/dotfiles/nvim $XDG_CONFIG_HOME/nvim
 ln -s $HOME/dotfiles/rofi $XDG_CONFIG_HOME/rofi
 ln -s $HOME/dotfiles/tmux $XDG_CONFIG_HOME/tmux
 ln -s $HOME/dotfiles/uwsm $XDG_CONFIG_HOME/uwsm
+ln -s $HOME/dotfiles/waybar $XDG_CONFIG_HOME/waybar
 ln -s $HOME/dotfiles/xdg-desktop-portal $XDG_CONFIG_HOME/xdg-desktop-portal
 ln -s $HOME/dotfiles/.bash_profile $HOME/.bash_profile
 ln -s $HOME/dotfiles/.bashrc $HOME/.bashrc
@@ -57,11 +59,12 @@ echo "First we gotta make sure everything's on the latest version..."
 sudo pacman -Syu
 
 echo "Amazing! Now we install what's needed with pacman..."
-sudo pacman -S --needed git base-devel grep less kitty tmux nvim lua luarocks nvm go \
-	hyprland mako sof-firmware pipewire pipewire-audio wireplumber sddm hyprlock hypridle \
-	xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland \
-	networkmanager hyprpolkitagent uwsm hyprpaper wget docker docker-compose unzip \
-	btop rofi brightnessctl
+sudo pacman -S --needed git base-devel grep less kitty tmux nvim lua luarocks \
+	nvm go hyprland mako sof-firmware pipewire pipewire-audio wireplumber sddm \
+	hyprlock hypridle xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
+	qt5-wayland qt6-wayland networkmanager hyprpolkitagent uwsm hyprpaper \
+	wget docker docker-compose unzip btop rofi brightnessctl waybar otf-font-awesome \
+
 
 echo "Setting Git's default branch to main"
 git config --global init.defaultBranch main
@@ -87,8 +90,9 @@ fi
 
 systemctl enable NetworkManager
 systemctl enable sddm
-systemctl --user enable --now hypridle
-systemctl --user enable --now hyprpolkitagent
+systemctl --user enable hypridle
+systemctl --user enable hyprpolkitagent
+systemctl --user enable waybar
 systemctl enable docker.socket
 
 echo -e "That's it. All done! ${CHECK_MARK}"
