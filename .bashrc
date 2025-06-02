@@ -26,12 +26,6 @@ gpgCat()
 	rm -rf "$2"
 }
 
-discli()
-{
-	gpg ~/Documents/Sush/d_a.gpg
-	discordo -token "$(< ~/Documents/Sush/d_a)" ; rm -rf ~/Documents/Sush/d_a
-}
-
 devClinker()
 {
 	if [[ $PWD != *"linker/backend" ]]; then
@@ -62,3 +56,4 @@ if [[ $PATH != "$BUN_BIN:$GO_BIN:MASON_BIN:$PATH" ]]; then
 fi
 
 source /usr/share/nvm/init-nvm.sh
+source /usr/share/bash-completion/completions/git
