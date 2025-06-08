@@ -14,7 +14,11 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
 	exit 1
 fi
 
-echo "Running setup script for Peter's magnificent one-of-a-kind marvelous Arch Linux setup. Ready? [y/n]:"
+echo "Running setup script for Peter's magnificent one-of-a-kind marvelous Arch Linux setup"
+echo "This will delete the config directories that you already have (the ones defined in this directory)"
+echo "Then it will create symlinks to these directories"
+echo "After which it will prompt you to move on to the next part (package installing and service activations)"
+echo "Ready? [y/n]:"
 read READY
 if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
 	echo "Exiting..."
@@ -70,7 +74,7 @@ echo "Setting Git's default branch to main"
 git config --global init.defaultBranch main
 
 echo "Installing latest Node.js and NPM versions with NVM..."
-nvm install node
+nvm install node --latest-npm
 
 echo "Incredible! Now let's install Yet another Yogurt..."
 git clone https://aur.archlinux.org/yay.git "$HOME/yay"
@@ -78,7 +82,10 @@ cd "$HOME/yay" || exit 69
 makepkg -si
 
 echo "And some AUR packages with it..."
-yay -S brave
+yay -S brave vesktop
+
+echo "And Bun too..."
+curl -fsSL https://bun.sh/install | bash
 
 echo "Done!"
 echo "Continue enabling services/sockets? [y/n]:"

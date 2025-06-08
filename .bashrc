@@ -46,14 +46,5 @@ battery()
 	done
 }
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export EDITOR="nvim"
-export BUN_BIN="$HOME/.bun/bin"
-export GO_BIN="$HOME/go/bin"
-export MASON_BIN="$HOME/.local/share/nvim/mason/bin"
-if [[ $PATH != "$BUN_BIN:$GO_BIN:MASON_BIN:$PATH" ]]; then
-	export PATH="$BUN_BIN:$GO_BIN:$MASON_BIN:$PATH"
-fi
-
 source /usr/share/nvm/init-nvm.sh
 source /usr/share/bash-completion/completions/git
