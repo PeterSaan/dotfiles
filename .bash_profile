@@ -2,11 +2,7 @@
 # ~/.bash_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-
-if [ -z "$TMUX" ] && uwsm check may-start; then
-    exec uwsm start hyprland.desktop
-fi
+[[ -f $HOME/.bashrc ]] && . $HOME/.bashrc
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR="nvim"
