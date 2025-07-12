@@ -15,10 +15,7 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
 fi
 
 echo "Running setup script for Peter's magnificent one-of-a-kind marvelous Arch Linux setup"
-echo "This will delete the config directories that you already have (the ones defined in this directory)"
-echo "Then it will create symlinks to these directories"
-echo "After which it will prompt you to move on to the next part (package installing and service activations)"
-echo "Ready? [y/n]:"
+echo "Ready? [Y/n]:"
 read READY
 if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
 	echo "Exiting..."
@@ -55,7 +52,7 @@ sudo ln -s $HOME/dotfiles/sddm/sddm.conf /etc/sddm.conf
 sudo cp --update=all -i $HOME/dotfiles/hypr/sddm/hyprland.conf /usr/lib/sddm/sddm.conf.d/hyprland.conf
 
 echo "Done!"
-echo "Continue with installing? [y/n]:"
+echo "Continue with installing? [Y/n]:"
 read READY
 if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
 	echo "Exiting"
@@ -73,25 +70,40 @@ sudo pacman -S --needed git base-devel grep less kitty tmux nvim lua luarocks \
 	wget docker docker-compose unzip btop rofi brightnessctl waybar otf-font-awesome \
 
 
-echo "Setting Git's default branch to main"
-git config --global init.defaultBranch main
+echo "Change Git's default branch to main? [y/N]:"
+read OPTIONAL
+if [ "$(echo "$OPTIONAL" | tr '[:upper:]' '[:lower:]')" == 'y' ]; then
+	git config --global init.defaultBranch main
+fi
 
-echo "Installing latest Node.js and NPM versions with NVM..."
-nvm install node --latest-npm
+echo "Install Node and NPM with NVM? [y/N]"
+read OPTIONAL
+if [ "$(echo "$OPTIONAL" | tr '[:upper:]' '[:lower:]')" == 'y' ]; then
+	nvm install node --latest-npm
+fi
 
-echo "Incredible! Now let's install Yet another Yogurt..."
-git clone https://aur.archlinux.org/yay.git "$HOME/yay"
-cd "$HOME/yay" || exit 69
-makepkg -si
+echo "Install YAY? [y/N]"
+read OPTIONAL
+if [ "$(echo "$OPTIONAL" | tr '[:upper:]' '[:lower:]')" == 'y' ]; then
+	git clone https://aur.archlinux.org/yay.git "$HOME/yay"
+	cd "$HOME/yay" || exit 69
+	makepkg -si
+fi
 
-echo "And some AUR packages with it..."
-yay -S brave vesktop
+echo "Install AUR packages with YAY? [y/N]"
+read OPTIONAL
+if [ "$(echo "$OPTIONAL" | tr '[:upper:]' '[:lower:]')" == 'y' ]; then
+	yay -S brave vesktop
+fi
 
-echo "And Bun too..."
-curl -fsSL https://bun.sh/install | bash
+echo "Install Bun? [y/N]"
+read OPTIONAL
+if [ "$(echo "$OPTIONAL" | tr '[:upper:]' '[:lower:]')" == 'y' ]; then
+	curl -fsSL https://bun.sh/install | bash
+fi
 
 echo "Done!"
-echo "Continue enabling services/sockets? [y/n]:"
+echo "Continue enabling services/sockets? [Y/n]:"
 read READY
 if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
 	echo "Exiting"
