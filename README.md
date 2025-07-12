@@ -9,3 +9,6 @@
 
 ## After running the script
 Reboot and make sure everything's working as it should.
+
+## Manual installation required!
+SDDM theme
