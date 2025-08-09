@@ -24,27 +24,31 @@ fi
 
 echo "Copypasting and symlinking..."
 
-rm -rf $XDG_CONFIG_HOME/hypr*
-rm -rf $XDG_CONFIG_HOME/kitty*
-rm -rf $XDG_CONFIG_HOME/neofetch*
-rm -rf $XDG_CONFIG_HOME/nvim*
-rm -rf $XDG_CONFIG_HOME/rofi*
-rm -rf $XDG_CONFIG_HOME/tmux*
-rm -rf $XDG_CONFIG_HOME/uwsm*
-rm -rf $XDG_CONFIG_HOME/waybar*
-rm -rf $XDG_CONFIG_HOME/xdg-desktop-portal*
+rm -rf $XDG_CONFIG_HOME/hypr
+rm -rf $XDG_CONFIG_HOME/kitty
+rm -rf $XDG_CONFIG_HOME/mako
+rm -rf $XDG_CONFIG_HOME/neofetch
+rm -rf $XDG_CONFIG_HOME/nvim
+rm -rf $XDG_CONFIG_HOME/rofi
+rm -rf $XDG_CONFIG_HOME/tmux
+rm -rf $XDG_CONFIG_HOME/uwsm
+rm -rf $XDG_CONFIG_HOME/waybar
+rm -rf $XDG_CONFIG_HOME/wireplumber
+rm -rf $XDG_CONFIG_HOME/xdg-desktop-portal
 rm -rf $HOME/.bash_profile
 rm -rf $HOME/.bashrc
 sudo rm /etc/sddm.conf
 
 ln -s $HOME/dotfiles/hypr $XDG_CONFIG_HOME/hypr
 ln -s $HOME/dotfiles/kitty $XDG_CONFIG_HOME/kitty
+ln -s $HOME/dotfiles/mako $XDG_CONFIG_HOME/mako
 ln -s $HOME/dotfiles/neofetch $XDG_CONFIG_HOME/neofetch
 ln -s $HOME/dotfiles/nvim $XDG_CONFIG_HOME/nvim
 ln -s $HOME/dotfiles/rofi $XDG_CONFIG_HOME/rofi
 ln -s $HOME/dotfiles/tmux $XDG_CONFIG_HOME/tmux
 ln -s $HOME/dotfiles/uwsm $XDG_CONFIG_HOME/uwsm
 ln -s $HOME/dotfiles/waybar $XDG_CONFIG_HOME/waybar
+ln -s $HOME/dotfiles/wireplumber $XDG_CONFIG_HOME/wireplumber
 ln -s $HOME/dotfiles/xdg-desktop-portal $XDG_CONFIG_HOME/xdg-desktop-portal
 ln -s $HOME/dotfiles/.bash_profile $HOME/.bash_profile
 ln -s $HOME/dotfiles/.bashrc $HOME/.bashrc
