@@ -9,7 +9,8 @@ alias l='ls -CF --color=auto'
 alias la='ls -AF --color=auto'
 alias grep='grep --color=auto'
 alias vim='nvim'
-alias g++='g++ -std=c++23'
+alias btpause='echo -e "menu player\npause\n" | bluetoothctl'
+alias btplay='echo -e "menu player\nplay\n" | bluetoothctl'
 
 PS1='[\u@\h \W]\$ '
 
