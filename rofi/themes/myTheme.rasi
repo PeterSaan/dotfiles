@@ -5,11 +5,11 @@
 * {
 	red:                         rgba ( 220, 50, 47, 100 % );
 	blue:                        rgba ( 38, 139, 210, 100 % );
-	background:                  rgba ( 253, 246, 227, 100 % );
-	lightbg:                     rgba ( 238, 232, 213, 100 % );
-	foreground:                  rgba ( 0, 43, 54, 100 % );
+	background:                  rgba ( 27, 27, 39, 100 % );
+	lightbg:                     rgba ( 40, 40, 52, 100 % );
+	foreground:                  rgba ( 255, 255, 255, 100 % );
 	spacing:                     2;
-	lightfg:                     rgba ( 88, 104, 117, 100 % );
+	lightfg:                     rgba ( 51, 205, 255, 100 % );
 	selected-active-foreground:  var(background);
 	separatorcolor:              var(foreground);
 	urgent-foreground:           var(red);
@@ -102,7 +102,8 @@ element-icon {
 window {
 	padding:          10;
 	background-color: var(background);
-	border:           0;
+	border:           4px;
+	border-color:			var(lightfg);
 }
 
 mainbox {
@@ -122,23 +123,10 @@ textbox {
 
 listview {
 	padding:      2px 0px 0px ;
-	scrollbar:    true;
+	scrollbar:    false;
 	border-color: var(separatorcolor);
 	spacing:      2px ;
 	fixed-height: 0;
-	border:       2px dash 0px 0px ;
-}
-
-scrollbar {
-	width:        10px ;
-	padding:      0;
-	handle-width: 10px ;
-	border:       0;
-	handle-color: var(normal-foreground);
-}
-
-sidebar {
-	border-color: var(separatorcolor);
 	border:       2px dash 0px 0px ;
 }
 
@@ -153,50 +141,23 @@ button selected {
 	text-color:       var(selected-normal-foreground);
 }
 
-num-filtered-rows {
-	expand:     false;
-	text-color: Gray;
-}
-
-num-rows {
-	expand:     false;
-	text-color: Gray;
-}
-
-textbox-num-sep {
-	expand:     false;
-	str:        "/";
-	text-color: Gray;
-}
-
 inputbar {
-	padding:    1px ;
-	spacing:    0px ;
+	padding:    10px ;
 	text-color: var(normal-foreground);
-	children:   [ "prompt","textbox-prompt-colon","entry","num-filtered-rows","textbox-num-sep","num-rows","case-indicator" ];
-}
-
-case-indicator {
-	spacing:    0;
-	text-color: var(normal-foreground);
-}
-
-entry {
-	text-color:        var(normal-foreground);
-	cursor:            text;
-	spacing:           0;
-	placeholder-color: Gray;
-	placeholder:       "Type to filter";
+	children:   [ "prompt","entry" ];
 }
 
 prompt {
-	spacing:    0;
+	font: "mono Italic Extra-Bold 11";
 	text-color: var(normal-foreground);
+	text-underline: true;
+	margin:			3px 0px 0px 0px;
 }
 
-textbox-prompt-colon {
-	margin:     0px 0.3000em 0.0000em 0.0000em ;
-	expand:     false;
-	str:        ":";
-	text-color: inherit;
+entry {
+	text-color:        		var(normal-foreground);
+	cursor:            		text;
+	hide-cursor-on-empty:	true;
+	placeholder-color: 		Gray;
+	margin:								0px 0px 0px 10px;
 }
