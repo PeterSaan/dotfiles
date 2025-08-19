@@ -11,6 +11,8 @@ alias grep='grep --color=auto'
 alias vim='nvim'
 alias btpause='echo -e "menu player\npause\n" | bluetoothctl'
 alias btplay='echo -e "menu player\nplay\n" | bluetoothctl'
+alias btnext='echo -e "menu player\nnext\n" | bluetoothctl'
+alias btprev='echo -e "menu player\nprevious\n" | bluetoothctl'
 
 PS1='[\u@\h \W]\$ '
 
