@@ -13,6 +13,7 @@ alias btpause='echo -e "menu player\npause\n" | bluetoothctl'
 alias btplay='echo -e "menu player\nplay\n" | bluetoothctl'
 alias btnext='echo -e "menu player\nnext\n" | bluetoothctl'
 alias btprev='echo -e "menu player\nprevious\n" | bluetoothctl'
+alias yay='yay --aur'
 
 PS1='[\u@\h \W]\$ '
 

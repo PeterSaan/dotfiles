@@ -38,7 +38,9 @@
 		"format-alt": "{:%Y-%m-%d}"
 	},
 	"cpu": {
+		"interval": 5,
 		"format": "{usage}% ",
+		"on-click": "kitty btop",
 		"tooltip": false
 	},
 	"memory": {
@@ -91,18 +93,17 @@
 	},
 	"network": {
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"interval": 30,
-		"format-ethernet": "{ipaddr}/{cidr}  {bandwitdhUpBytes}",
+		"interval": 2,
+		"format-ethernet": "{ifname}",
 		"format-wifi": "{essid} ({signalStrength}%) ",
 		"format-linked": "{ifname} (No IP) ",
 		"format-disconnected": "Disconnected ⚠",
-		"format-alt": "{ifname}",
+		"format-alt": " {bandwidthUpBytes} | {bandwidthDownBytes} ",
 		"tooltip": false
 	},
 	"wireplumber": {
 		"scroll-step": 5.0,
 		"format": " {volume}%",
-		"max-volume": 100.0,
 		"format-muted": "",
 		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 	},
