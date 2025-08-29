@@ -59,50 +59,43 @@ button:hover {
 }
 
 #battery {
-	background-color: #ffffff;
-	color: #000000;
+	background-color: transparent;
+	border: 2px solid #33ccff;
+	border-radius: 12px;
+	color: #ffffff;
+	margin: 8px 0px;
+	padding: 0px 10px;
 }
 
 #battery.charging, #battery.plugged {
-	color: #ffffff;
-	background-color: #26A65B;
-}
-
-@keyframes blink {
-	to {
-		background-color: #ffffff;
-		color: #000000;
-	}
+	border-color: #2ecc71;
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-	background-color: #f53c3c;
-	color: #ffffff;
-	animation-name: blink;
-	animation-duration: 0.5s;
-	animation-timing-function: steps(12);
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
+	border-color: #f53c3c;
+	border-width: 4px;
 }
 
 #power-profiles-daemon {
-	padding-right: 15px;
+	background-color: transparent;
+	border: 2px solid #33ccff;
+	border-radius: 12px;
+	color: #ffffff;
+	margin: 8px 0px;
+	padding: 0px 10px;
 }
 
 #power-profiles-daemon.performance {
-	background-color: #f53c3c;
-	color: #ffffff;
+	border-color: #f53c3c;
 }
 
 #power-profiles-daemon.balanced {
-	background-color: #2980b9;
-	color: #ffffff;
+	border-color: #33ccff;
 }
 
 #power-profiles-daemon.power-saver {
-	background-color: #2ecc71;
-	color: #000000;
+	border-color: #2ecc71;
 }
 
 label:focus {
@@ -135,7 +128,12 @@ label:focus {
 }
 
 #backlight {
-	background-color: #90b1b1;
+	background-color: transparent;
+	border: 2px solid #33ccff;
+	border-radius: 12px;
+	color: #ffffff;
+	margin: 8px 0px;
+	padding: 0px 10px;
 }
 
 #network {
