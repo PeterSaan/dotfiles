@@ -4,7 +4,8 @@
 	// Choose the order of the modules
 	"modules-left": [
 		"memory",
-		"cpu"
+		"cpu",
+		"bluetooth"
 	],
 	"modules-center": [
 		"hyprland/workspaces",
@@ -29,6 +30,12 @@
 		"format": "{usage}% ",
 		"on-click": "kitty btop",
 		"tooltip": false
+	},
+	"bluetooth": {
+		"format": " {status}",
+		"format-connected": " {device_alias}",
+		"tooltip-format": "{device_address}",
+		"tooltip-format-connected-battery": "{device_battery_percentage}% @ {device_address}",
 	},
 	"hyprland/workspaces": {
 		"format": "{name}",
@@ -64,8 +71,7 @@
 	"battery": {
 		"interval": 5,
 		"states": {
-			"warning": 30,
-			"critical": 15
+			"critical": 30
 		},
 		"format": "{capacity}% {icon}",
 		"format-charging": "{capacity}% ",
@@ -75,7 +81,7 @@
 	"clock": {
 		"timezone": "Europe/Tallinn",
 		"tooltip": false,
-		"format-alt": "{:%Y-%m-%d}"
+		"format": "{:%H:%M | %d}"
 	},
 	"tray": {
 		"icon-size": 25,
