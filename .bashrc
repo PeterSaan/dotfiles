@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+alias btinfo='echo -e "menu player\nshow\n" | bluetoothctl'
 alias btnext='echo -e "menu player\nnext\n" | bluetoothctl'
 alias btpause='echo -e "menu player\npause\n" | bluetoothctl'
 alias btplay='echo -e "menu player\nplay\n" | bluetoothctl'

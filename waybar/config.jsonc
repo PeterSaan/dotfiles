@@ -55,7 +55,7 @@
 		"format-linked": "{ifname} (No IP) ",
 		"format-disconnected": "Disconnected ⚠",
 		"format-alt": " {bandwidthUpBytes} | {bandwidthDownBytes} ",
-		"tooltip": false
+		"tooltip-format": "{ipaddr}:{netmask}"
 	},
 	"power-profiles-daemon": {
 		"format": "{icon}",
