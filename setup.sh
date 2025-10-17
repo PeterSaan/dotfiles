@@ -56,7 +56,7 @@ sudo ln -s $HOME/dotfiles/sddm/sddm.conf /etc/sddm.conf
 sudo cp --update=all -i $HOME/dotfiles/sddm/hyprland.conf /usr/lib/sddm/sddm.conf.d/hyprland.conf
 
 echo "Done!"
-echo "Continue with installing? [Y/n]:"
+echo "Exit with installing? [Y/n]:"
 read READY
 if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
 	echo "Exiting"
@@ -72,7 +72,7 @@ sudo pacman -S --needed git base-devel grep less kitty tmux nvim lua luarocks \
 	hyprlock hypridle xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
 	qt5-wayland qt6-wayland networkmanager hyprpolkitagent uwsm hyprpaper \
 	wget docker docker-compose unzip btop rofi brightnessctl waybar otf-font-awesome \
-	firewalld
+	firewalld grim slurp
 
 
 echo "Change Git's default branch to main? [y/N]:"
