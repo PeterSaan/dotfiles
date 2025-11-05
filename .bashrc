@@ -28,15 +28,5 @@ battery() {
 	done
 }
 
-check_ip() {
-	ping -c 1 vpn.saanikas.com >/dev/null 2>&1
-	local RET=$?
-
-	if [[ $RET != 0 ]] then
-		echo "vpn.saanikas.com ping failed"
-	fi
-}
-check_ip
-
 source /usr/share/nvm/init-nvm.sh
 source /usr/share/bash-completion/completions/git

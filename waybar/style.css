@@ -80,6 +80,19 @@ button:hover {
 	border-color: #f53c3c;
 }
 
+#custom-domain {
+	background-color: transparent;
+	border: 2px solid #33ccff;
+	border-radius: 12px;
+	color: #ffffff;
+	margin: 8px 0px;
+	padding: 0px 8px;
+}
+
+#custom-domain.down {
+	border-color: #f53c3c;
+}
+
 #workspaces {
 	border: solid 2px #33ccff;
 	border-radius: 12px;

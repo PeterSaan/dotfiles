@@ -5,7 +5,8 @@
 	"modules-left": [
 		"memory",
 		"cpu",
-		"bluetooth"
+		"bluetooth",
+		"custom/domain"
 	],
 	"modules-center": [
 		"hyprland/workspaces",
@@ -38,6 +39,12 @@
 		"tooltip-format-connected-battery": "{device_battery_percentage}% @ {device_address}",
 		"on-click": "bash ~/dotfiles/scripts/bt-switch.sh"
 	},
+	"custom/domain": {
+		"exec": "bash ~/dotfiles/scripts/domain-check.sh",
+		"format": "{text}",
+		"restart-interval": "1800",
+		"return-type": "json"
+	},
 	"hyprland/workspaces": {
 		"format": "{name}",
 		"separate-outputs": true,
@@ -46,7 +53,7 @@
 		"scroll-step": 5.0,
 		"format": " {volume}%",
 		"format-muted": "",
-		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 	},
 	"network": {
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
