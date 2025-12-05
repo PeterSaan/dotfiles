@@ -39,12 +39,14 @@ rm -rf $HOME/.bash_profile
 rm -rf $HOME/.bashrc
 sudo rm /etc/sddm.conf
 
+[[ ! -d $XDG_CONFIG_HOME/systemd/user ]] && mkdir -p $XDG_CONFIG_HOME/systemd/user
 ln -s $HOME/dotfiles/hypr $XDG_CONFIG_HOME/hypr
 ln -s $HOME/dotfiles/kitty $XDG_CONFIG_HOME/kitty
 ln -s $HOME/dotfiles/mako $XDG_CONFIG_HOME/mako
 ln -s $HOME/dotfiles/neofetch $XDG_CONFIG_HOME/neofetch
 ln -s $HOME/dotfiles/nvim $XDG_CONFIG_HOME/nvim
 ln -s $HOME/dotfiles/rofi $XDG_CONFIG_HOME/rofi
+ln -s $HOME/dotfiles/systemd/user/* $XDG_CONFIG_HOME/systemd/user/
 ln -s $HOME/dotfiles/tmux $XDG_CONFIG_HOME/tmux
 ln -s $HOME/dotfiles/uwsm $XDG_CONFIG_HOME/uwsm
 ln -s $HOME/dotfiles/waybar $XDG_CONFIG_HOME/waybar
@@ -56,7 +58,7 @@ sudo ln -s $HOME/dotfiles/sddm/sddm.conf /etc/sddm.conf
 sudo cp --update=all -i $HOME/dotfiles/sddm/hyprland.conf /usr/lib/sddm/sddm.conf.d/hyprland.conf
 
 echo "Done!"
-echo "Exit with installing? [Y/n]:"
+echo "Exit without installing? [Y/n]:"
 read READY
 if [ "$(echo "$READY" | tr '[:upper:]' '[:lower:]')" == 'n' ]; then
 	echo "Exiting"

@@ -1,0 +1,11 @@
+[Unit]
+Description=Change battery charge thresholds to 80 and 90
+Documentation=https://github.com/PeterSaan/dotfiles
+ConditionEnvironment=BATTERIES
+
+[Service]
+User=root
+Group=root
+Type=exec
+ExecStart=/usr/bin/echo 80 | /usr/bin/tee /sys/class/power_supply/BAT*/charge_start_threshold && /usr/bin/echo 90 | /usr/bin/tee /sys/class/power_supply/BAT*/charge_end_threshold
+ExecStop=/usr/bin/echo 0 | /usr/bin/tee /sys/class/power_supply/BAT*/charge_start_threshold && /usr/bin/echo 100 | /usr/bin/tee /sys/class/power_supply/BAT*/charge_end_threshold
