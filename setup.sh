@@ -74,7 +74,7 @@ sudo pacman -S --needed git base-devel grep less kitty tmux nvim lua luarocks \
 	hyprlock hypridle xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
 	qt5-wayland qt6-wayland networkmanager hyprpolkitagent uwsm hyprpaper \
 	wget docker docker-compose unzip btop rofi brightnessctl waybar otf-font-awesome \
-	firewalld grim slurp jq
+	firewalld grim slurp jq tree-sitter-cli
 
 
 echo "Change Git's default branch to main? [y/N]:"
