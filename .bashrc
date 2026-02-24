@@ -30,5 +30,29 @@ battery() {
 	done
 }
 
+fastmaria() {
+	if [[ $# != 2 ]] then
+		echo "fastmaria requires 2 paramaters: container name and db name"
+		return 1
+	fi
+
+	local container_name=$1
+	local db_name=$2
+
+	docker container stop "$container_name"
+	local exit_code=$?
+
+	if [[ $exit_code == 0 ]] then
+		docker container remove "$container_name"
+	fi
+
+	docker run --detach --name "$container_name" -p 3306:3306 --env MARIADB_USER=user \
+		--env MARIADB_PASSWORD=user --env MARIADB_DATABASE="$db_name" \
+		--env MARIADB_ROOT_PASSWORD=my-secret-pw mariadb:11.8
+
+	echo "MariaDB 11.8.* container $container_name, table $db_name, user user, pass user"
+	return $?
+}
+
 source /usr/share/nvm/init-nvm.sh
 source /usr/share/bash-completion/completions/git
