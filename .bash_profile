@@ -11,6 +11,7 @@ export BUN_BIN="$HOME/.bun/bin"
 export GO_BIN="$HOME/go/bin"
 export MASON_BIN="$HOME/.local/share/nvim/mason/bin"
 export COMPOSER_BIN="$HOME/.config/composer/vendor/bin"
-export PATH="$BUN_BIN:$GO_BIN:$MASON_BIN:$COMPOSER_BIN:$PATH"
+export USER_BIN="$HOME/bin"
+export PATH="$USER_BIN:$BUN_BIN:$GO_BIN:$MASON_BIN:$COMPOSER_BIN:$PATH"
 
 source $HOME/dotfiles/custom/scripts/battery-check.sh
