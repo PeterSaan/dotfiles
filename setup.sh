@@ -55,7 +55,7 @@ ln -s $HOME/dotfiles/xdg-desktop-portal $XDG_CONFIG_HOME/xdg-desktop-portal
 ln -s $HOME/dotfiles/.bash_profile $HOME/.bash_profile
 ln -s $HOME/dotfiles/.bashrc $HOME/.bashrc
 sudo ln -s $HOME/dotfiles/sddm/sddm.conf /etc/sddm.conf
-sudo cp --update=all -i $HOME/dotfiles/sddm/hyprland.conf /usr/lib/sddm/sddm.conf.d/hyprland.conf
+sudo cp --update=all -i $HOME/dotfiles/hypr/sddm-hypr.lua /usr/lib/sddm/sddm.conf.d/hyprland.lua
 
 echo "Done!"
 echo "Exit without installing? [Y/n]:"
