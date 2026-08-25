@@ -17,6 +17,10 @@ hl.config({
 			color = "rgba(1a1a1aee)",
 		},
 	},
+	dwindle = {
+		preserve_split = true,
+		force_split = 2,
+	},
 	general = {
 		border_size = 1,
 		float_gaps = 0,
@@ -32,6 +36,13 @@ hl.config({
 		extend_border_grab_area = 15, -- gaps_out + gaps_workspaces
 		allow_tearing = false,
 		no_focus_fallback = true,
+	},
+	master = {
+		new_status = "master",
+	},
+	misc = {
+		disable_hyprland_logo = false,
+		force_default_wallpaper = false,
 	},
 })
 
