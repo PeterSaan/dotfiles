@@ -43,57 +43,49 @@ hl.bind(
 )
 hl.bind(withSuper("SHIFT", "L"), hl.dsp.exec_cmd("hyprlock"), { description = "Lock the session", locked = true })
 hl.bind(
-	withSuper("XF86AudioRaiseVolume"),
+	"XF86AudioRaiseVolume",
 	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
 	{ description = "Raise the volume by 5%", repeating = true }
 )
 hl.bind(
-	withSuper("XF86AudioLowerVolume"),
+	"XF86AudioLowerVolume",
 	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"),
 	{ description = "Lower the volume by 5%", repeating = true }
 )
 hl.bind(
-	withSuper("XF86AudioMute"),
+	"XF86AudioMute",
 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
 	{ description = "Toggle audio mute", locked = true }
 )
 hl.bind(
-	withSuper("XF86AudioMicMute"),
+	"XF86AudioMicMute",
 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
 	{ description = "Toggle mic mute", locked = true }
 )
 hl.bind(
-	withSuper("SHIFT", "XF86MonBrightnessDown"),
+	"SHIFT + XF86MonBrightnessDown",
 	hl.dsp.exec_cmd("brightnessctl s 0%"),
 	{ description = "Minimize the brightness", locked = true }
 )
 hl.bind(
-	withSuper("SHIFT", "XF86MonBrightnessUp"),
+	"SHIFT + XF86MonBrightnessUp",
 	hl.dsp.exec_cmd("brightnessctl s 100%"),
 	{ description = "Maximize the brightness", locked = true }
 )
 hl.bind(
-	withSuper("XF86AudioPrev"),
+	"XF86AudioPrev",
 	hl.dsp.exec_cmd("playerctl previous"),
 	{ description = "Rewind or play previous track", locked = true }
 )
-hl.bind(withSuper("XF86AudioNext"), hl.dsp.exec_cmd("playerctl next"), { description = "Skip track", locked = true })
-hl.bind(
-	withSuper("XF86AudioPlay"),
-	hl.dsp.exec_cmd("playerctl play-pause"),
-	{ description = "Pause track", locked = true }
-)
-hl.bind(
-	withSuper("XF86AudioPause"),
-	hl.dsp.exec_cmd("playerctl play-pause"),
-	{ description = "Pause track", locked = true }
-)
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { description = "Skip track", locked = true })
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Pause track", locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Pause track", locked = true })
 
-hl.bind(withSuper("XF86MonBrightnessDown"), function()
-	hl.dsp.exec_cmd("brightnessctl s 5%-")
-	hl.dsp.exec_raw("bash ~/dotfiles/custom/scripts/brightness-noti.sh")
+hl.bind("XF86MonBrightnessDown", function()
+	hl.dispatch(hl.dsp.exec_cmd("brightnessctl s 5%-"))
+	hl.dispatch(hl.dsp.exec_raw("bash ~/dotfiles/custom/scripts/brightness-noti.sh"))
 end, { description = "Lower the brightness by 5%", repeating = true })
-hl.bind(withSuper("XF86MonBrightnessUp"), function()
-	hl.dsp.exec_cmd("brightnessctl s 5%+")
-	hl.dsp.exec_raw("bash ~/dotfiles/custom/scripts/brightness-noti.sh")
+hl.bind("XF86MonBrightnessUp", function()
+	hl.dispatch(hl.dsp.exec_cmd("brightnessctl s 5%+"))
+	hl.dispatch(hl.dsp.exec_raw("bash ~/dotfiles/custom/scripts/brightness-noti.sh"))
 end, { description = "Raise the brightness by 5%", repeating = true })
