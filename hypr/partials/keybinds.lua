@@ -22,10 +22,6 @@ hl.bind(withSuper("F"), hl.dsp.window.fullscreen(), { description = "Toggle full
 hl.bind(withSuper("C"), hl.dsp.window.close(), { description = "Gracefully close active window" })
 hl.bind(withSuper("SHIFT", "C"), hl.dsp.window.kill(), { description = "Kill active window" })
 hl.bind(withSuper("V"), hl.dsp.window.float({ action = "toggle" }), { description = "Toggle floating" })
-hl.bind(withSuper("SHIFT", "H"), hl.dsp.window.move({ direction = "l" }))
-hl.bind(withSuper("SHIFT", "J"), hl.dsp.window.move({ direction = "d" }))
-hl.bind(withSuper("SHIFT", "K"), hl.dsp.window.move({ direction = "u" }))
-hl.bind(withSuper("SHIFT", "L"), hl.dsp.window.move({ direction = "r" }))
 hl.bind(withSuper("mouse:272"), hl.dsp.window.drag())
 hl.bind(withSuper("mouse:273"), hl.dsp.window.resize())
 
