@@ -35,7 +35,11 @@ hl.bind(withSuper("SHIFT", "TAB"), hl.dsp.focus({ workspace = "-1" }))
 hl.bind(withSuper("Q"), hl.dsp.exec_cmd(programs.terminal.cmd), { description = "Open Kitty" })
 hl.bind(withSuper("B"), hl.dsp.exec_cmd(programs.browser.cmd), { description = "Open Brave" })
 hl.bind(withSuper("R"), hl.dsp.exec_cmd(programs.menu.cmd), { description = "Open Rofi" })
-hl.bind(withSuper("SHIFT", "W"), hl.dsp.exec_raw("bash ~/dotfiles/custom/scripts/toggle-waybar.sh"))
+hl.bind(
+	withSuper("SHIFT", "W"),
+	hl.dsp.exec_raw("bash ~/dotfiles/custom/scripts/toggle-waybar.sh"),
+	{ description = "Toggle Waybar" }
+)
 hl.bind(
 	withSuper("SHIFT", "S"),
 	hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'),
