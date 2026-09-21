@@ -63,6 +63,16 @@ hl.bind(
 	{ description = "Toggle mic mute", locked = true }
 )
 hl.bind(
+	"XF86MonBrightnessDown",
+	hl.dsp.exec_raw("sh -c 'brightnessctl s 5%-' && bash ~/dotfiles/custom/scripts/brightness-noti.sh"),
+	{ description = "Lower the brightness by 5%", repeating = true }
+)
+hl.bind(
+	"XF86MonBrightnessUp",
+	hl.dsp.exec_raw("sh -c 'brightnessctl s 5%+' && bash ~/dotfiles/custom/scripts/brightness-noti.sh"),
+	{ description = "Raise the brightness by 5%", repeating = true }
+)
+hl.bind(
 	"SHIFT + XF86MonBrightnessDown",
 	hl.dsp.exec_cmd("brightnessctl s 0%"),
 	{ description = "Minimize the brightness", locked = true }
@@ -80,12 +90,3 @@ hl.bind(
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { description = "Skip track", locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Pause track", locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Pause track", locked = true })
-
-hl.bind("XF86MonBrightnessDown", function()
-	hl.dispatch(hl.dsp.exec_cmd("brightnessctl s 5%-"))
-	hl.dispatch(hl.dsp.exec_raw("bash ~/dotfiles/custom/scripts/brightness-noti.sh"))
-end, { description = "Lower the brightness by 5%", repeating = true })
-hl.bind("XF86MonBrightnessUp", function()
-	hl.dispatch(hl.dsp.exec_cmd("brightnessctl s 5%+"))
-	hl.dispatch(hl.dsp.exec_raw("bash ~/dotfiles/custom/scripts/brightness-noti.sh"))
-end, { description = "Raise the brightness by 5%", repeating = true })
