@@ -48,6 +48,7 @@
 	"hyprland/workspaces": {
 		"format": "{name}",
 		"separate-outputs": true,
+		"on-click": "activate",
 	},
 	"wireplumber": {
 		"scroll-step": 5.0,
